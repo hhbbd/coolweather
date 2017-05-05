@@ -1,7 +1,10 @@
 package com.example.asus.myapplication;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -16,6 +19,19 @@ public class MainActivity extends AppCompatActivity {
                 MainActivity.this,android.R.layout.simple_list_item_1,province);
         ListView listView =(ListView) findViewById(R.id.list_view);
         listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String provinceresulit=parent.getItemAtPosition(position).toString();
+
+                if (provinceresulit=="北京市"){
+                    Intent intent=new Intent(MainActivity.this,Main2Activity.class);
+                    startActivity(intent);
+            }
+
+                }
+
+        });
 
     }
 }
