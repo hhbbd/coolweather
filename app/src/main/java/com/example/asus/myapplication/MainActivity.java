@@ -7,6 +7,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
+
+import static android.R.attr.data;
 
 public class MainActivity extends AppCompatActivity {
     private String [] province={"北京","上海","天津","重庆","香港","澳门","台湾","黑龙江","吉林","辽宁","内蒙古","河北","河南","山西",
@@ -15,19 +18,16 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);ArrayAdapter<String > adapter=new ArrayAdapter<String>(
-                MainActivity.this,android.R.layout.simple_list_item_1,province);
+        setContentView(R.layout.activity_main);
+        ArrayAdapter<String > adapter=new ArrayAdapter<String>(MainActivity.this,android.R.layout.simple_list_item_1,province);
         ListView listView =(ListView) findViewById(R.id.list_view);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String provinceresulit=parent.getItemAtPosition(position).toString();
-
-                if (provinceresulit=="北京市"){
-                    Intent intent=new Intent(MainActivity.this,Main2Activity.class);
-                    startActivity(intent);
-            }
+                Intent intent=new Intent(MainActivity.this,Main2Activity.class);
+                intent.putExtra("p",province[position]);
+                startActivity(intent);
 
                 }
 
