@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         final ListView listView =(ListView) findViewById(R.id.list_view);
+
         ArrayAdapter adapter=
         new ArrayAdapter<String>(MainActivity.this,android.R.layout.simple_list_item_1,province);
         listView.setAdapter(adapter);
@@ -29,15 +30,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
 
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(MainActivity.this,province.get(position),Toast.LENGTH_SHORT).show();
-                if ("北京".equals(MainActivity.this,province.get(position))) {
+
+
+                if ("北京".equals(province[position])) {
                     ArrayAdapter adapter =
                             new ArrayAdapter<String>(MainActivity.this
                                     , android.R.layout.simple_list_item_1,
                                     MainActivity.this.beijing);
                     listView.setAdapter(adapter);
                 }
-                else if("浙江".equals(MainActivity.this,province.get(position)))
+                else if("浙江".equals(province[position]))
                 {
                     ArrayAdapter adapter =
                             new ArrayAdapter<String>(MainActivity.this
